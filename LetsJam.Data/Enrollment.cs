@@ -19,7 +19,11 @@ namespace LetsJam.Data
         public int LessonId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         public string DifficultyLevel { get; set; }
+
         public virtual Member Member { get; set; }
         public virtual Lesson Lesson { get; set; }
     }

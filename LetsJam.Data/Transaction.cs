@@ -12,15 +12,23 @@ namespace LetsJam.Data
     {
         [Key]
         public int TransactionId { get; set; }
+
+        [Required]
+        public Guid OwnerId { get; set; }
+
         [ForeignKey(nameof(Product))]
         public string SKU { get; set; }
+
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         public DateTime DateOfTransaction { get; set; }
+
         [Required]
         public int NumberOfProductPurchased { get; set; }
+
         public virtual Product Product { get; set; }
         public virtual Member Member { get; set; }
     }

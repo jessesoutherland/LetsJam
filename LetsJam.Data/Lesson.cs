@@ -11,10 +11,16 @@ namespace LetsJam.Data
     {
         [Key]
         public int LessonId { get; set; }
+
+        [Required]
+        public Guid OwnerId { get; set; }
+
         [Required]
         public string Instrument { get; set; }
+
         [Required]
         public string Description { get; set; }
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+
+        public virtual ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
     }
 }

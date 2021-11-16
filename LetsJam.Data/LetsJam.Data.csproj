@@ -58,6 +58,19 @@
     <Compile Include="Lesson.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202111161616555_Initial.cs" />
+    <Compile Include="Migrations\202111161616555_Initial.Designer.cs">
+      <DependentUpon>202111161616555_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111161849489_ownerids.cs" />
+    <Compile Include="Migrations\202111161849489_ownerids.Designer.cs">
+      <DependentUpon>202111161849489_ownerids.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111162130508_updates.cs" />
+    <Compile Include="Migrations\202111162130508_updates.Designer.cs">
+      <DependentUpon>202111162130508_updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transaction.cs" />
@@ -65,6 +78,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111161616555_Initial.resx">
+      <DependentUpon>202111161616555_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111161849489_ownerids.resx">
+      <DependentUpon>202111161849489_ownerids.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111162130508_updates.resx">
+      <DependentUpon>202111162130508_updates.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

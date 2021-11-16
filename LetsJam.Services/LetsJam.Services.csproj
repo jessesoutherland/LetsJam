@@ -55,11 +55,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="MemberService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LetsJam.Data\LetsJam.Data.csproj">
+      <Project>{b7091245-f263-47cc-89e4-22ee74c2d728}</Project>
+      <Name>LetsJam.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LetsJam.Models\LetsJam.Models.csproj">
+      <Project>{6f66a21b-8396-4f2e-9a03-003905995c27}</Project>
+      <Name>LetsJam.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,12 +54,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Member\MemberCreate.cs" />
+    <Compile Include="Member\MemberDetail.cs" />
+    <Compile Include="Member\MemberList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LetsJam.Data\LetsJam.Data.csproj">
+      <Project>{B7091245-F263-47CC-89E4-22EE74C2D728}</Project>
+      <Name>LetsJam.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
