@@ -32,11 +32,11 @@ namespace LetsJam.Data
             return new ApplicationDbContext();
         }
 
-        //public DbSet<Member> Members { get; set; }
-        //public DbSet<Product> Products { get; set; }
-        //public DbSet<Lesson> Lessons { get; set; }
-        //public DbSet<Enrollment> Enrollments { get; set; }
-        //public DbSet<Transatction> Transactions { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
