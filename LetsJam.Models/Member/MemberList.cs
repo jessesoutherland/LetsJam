@@ -15,6 +15,7 @@ namespace LetsJam.Models
         [Display(Name="Name")]
         public string FullName { get; set; }
 
+        [UIHint("Student")]
         [Display(Name ="Current Student")]
         public bool IsStudent { get; set; }
     }

@@ -10,15 +10,15 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@if(TempData.ContainsKey("SaveResult"))
-            {
-                <div class="alert alert-success fade in" role="alert">
-                    <button type="button" class="close" data-dismiss="alert">
-                        <span>&times;</span>
-                    </button>
-                    @TempData["SaveResult"]
-                </div>
-            }
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -33,23 +33,49 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MemberId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsStudent)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MemberId }) |
-            @Html.ActionLink("Details", "Details", new {id=item.MemberId }) |
-            @Html.ActionLink("Delete", "Delete", new {id=item.MemberId })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemberId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsStudent, new { Id = item.MemberId})
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
+            </td>
+        </tr>
+    }
 </table>
+@section scripts {
+    <script language="javascript" type="text/javascript">
+     $(document).ready(function () {
+         $("i[data-toggle='education']")
+             .css({ "cursor": "pointer" })
+             .click(function (e) {
+                 var target = $(e.target);
+                 var memberId = target.attr("data-id");
+                 var studentSet = target.hasClass("glyphicon-education");
+
+                 $.ajax({
+                        method: studentSet ? "DELETE" : "PUT",
+                        url: "/api/member/" + memberId + "/student",
+                        data: null
+                 })
+                 .done(function (r) {
+                     target.removeClass();
+                     target.addClass("glyphicon " + (studentSet ? "glyphicon-ban-circle" : "glyphicon-education"));
+                 })
+                 .fail(function (r) {
+                     alert("Failed to change student status");
+                 });
+             });
+     });
+    </script>
+}

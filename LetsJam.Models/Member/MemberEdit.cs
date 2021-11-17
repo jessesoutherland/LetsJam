@@ -25,7 +25,8 @@ namespace LetsJam.Models.Member
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
-        [DefaultValue(false)]
+        [Display(Name = "Current Student")]
+        [UIHint("Student")]
         public bool IsStudent { get; set; }
     }
 }

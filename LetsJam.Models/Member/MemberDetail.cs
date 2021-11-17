@@ -30,7 +30,6 @@ namespace LetsJam.Models.Member
         [Display(Name = "Phone Number")]
         public string Phone { get; set; }
 
-        [DefaultValue(false)]
         [Display(Name = "Current Student")]
         public bool IsStudent { get; set; }
 
