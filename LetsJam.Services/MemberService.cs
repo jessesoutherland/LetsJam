@@ -60,6 +60,8 @@ namespace LetsJam.Services
                 return new MemberDetail
                 {
                     MemberId = entity.MemberId,
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
                     FullName = entity.FullName,
                     Email = entity.Email,
                     Phone = entity.Phone,
@@ -77,6 +79,34 @@ namespace LetsJam.Services
                         NumberOfProductPurchased = c.NumberOfProductPurchased
                     }).ToList()
                 };
+            }
+        }
+
+        public bool UpdateMember(MemberEdit member)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Members.Single(e => e.MemberId == member.MemberId && e.OwnerId == _userId);
+
+                query.FirstName = member.FirstName;
+                query.LastName = member.LastName;
+                query.Email = member.Email;
+                query.Phone = member.Phone;
+                query.IsStudent = member.IsStudent;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteMember(int id)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Members.Single(e => e.MemberId == id && e.OwnerId == _userId);
+
+                ctx.Members.Remove(query);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

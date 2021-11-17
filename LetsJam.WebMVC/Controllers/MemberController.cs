@@ -50,11 +50,66 @@ namespace LetsJam.WebMVC.Controllers
         public ActionResult Details(int id)
         {
             var svc = CreateMemberService();
+
             var model = svc.GetMemberById(id);
 
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var svc = CreateMemberService();
+            var member = svc.GetMemberById(id);
+            var model = new MemberEdit
+            {
+                MemberId = member.MemberId,
+                FirstName = member.FirstName,
+                LastName = member.LastName,
+                Email = member.Email,
+                Phone = member.Phone,
+                IsStudent = member.IsStudent
+            };
+
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, MemberEdit member)
+        {
+            if (!ModelState.IsValid) return View(member);
+
+            var service = CreateMemberService();
+
+            if (service.UpdateMember(member))
+            {
+                TempData["SaveResult"] = "The member was updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "The member could not be updated.");
+
+            return View(member);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateMemberService();
+
+            var model = svc.GetMemberById(id);
+
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken, ActionName("Delete")]
+        public ActionResult DeletePost(int id)
+        {
+            var svc = CreateMemberService();
+
+            svc.DeleteMember(id);
+
+            TempData["SaveResult"] = "The member was deleted";
+
+            return RedirectToAction("Index");
+        }
 
         private MemberService CreateMemberService()
         {
