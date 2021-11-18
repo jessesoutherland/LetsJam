@@ -1,6 +1,8 @@
 ﻿using LetsJam.Data;
 using LetsJam.Models;
+using LetsJam.Models.Enrollment;
 using LetsJam.Models.Member;
+using LetsJam.Models.Transaction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,11 +43,11 @@ namespace LetsJam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Members.Where(e => e.OwnerId == _userId).Select(e => new MemberList
+                var query = ctx.Members.Where(m => m.OwnerId == _userId).Select(m => new MemberList
                 {
-                    MemberId = e.MemberId,
-                    FullName = e.FirstName + " " + e.LastName,
-                    IsStudent = e.IsStudent
+                    MemberId = m.MemberId,
+                    FullName = m.FirstName + " " + m.LastName,
+                    IsStudent = m.IsStudent
 
                 });
                 return query.ToArray();
@@ -56,7 +58,7 @@ namespace LetsJam.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Members.Single(e => e.MemberId == id && e.OwnerId == _userId);
+                var entity = ctx.Members.Single(m => m.MemberId == id && m.OwnerId == _userId);
                 return new MemberDetail
                 {
                     MemberId = entity.MemberId,
@@ -66,17 +68,17 @@ namespace LetsJam.Services
                     Email = entity.Email,
                     Phone = entity.Phone,
                     IsStudent = entity.IsStudent,
-                    Enrollments = entity.Enrollments.Select(b => new Enrollment
+                    Enrollments = entity.Enrollments.Select(b => new EnrollmentList
                     {
-                        LessonId = b.LessonId,
-                        DifficultyLevel = b.DifficultyLevel,
+                        //LessonId = b.LessonId,
+                        //DifficultyLevel = b.DifficultyLevel,
                     }).ToList(),
-                    Transactions = entity.Transactions.Select(c => new Transaction
+                    Transactions = entity.Transactions.Select(t => new TransactionList4Member
                     {
-                        TransactionId = c.TransactionId,
-                        SKU = c.SKU,
-                        DateOfTransaction = c.DateOfTransaction,
-                        NumberOfProductPurchased = c.NumberOfProductPurchased
+                        TransactionId = t.TransactionId,
+                        ProductName = t.Product.Name,
+                        DateOfTransaction = t.DateOfTransaction,
+                        NumberOfProductPurchased = t.NumberOfProductPurchased
                     }).ToList()
                 };
             }
@@ -86,7 +88,7 @@ namespace LetsJam.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Members.Single(e => e.MemberId == member.MemberId && e.OwnerId == _userId);
+                var query = ctx.Members.Single(m => m.MemberId == member.MemberId && m.OwnerId == _userId);
 
                 query.FirstName = member.FirstName;
                 query.LastName = member.LastName;
@@ -102,7 +104,7 @@ namespace LetsJam.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Members.Single(e => e.MemberId == id && e.OwnerId == _userId);
+                var query = ctx.Members.Single(m => m.MemberId == id && m.OwnerId == _userId);
 
                 ctx.Members.Remove(query);
 

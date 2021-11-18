@@ -1,33 +1,26 @@
-﻿using System;
+﻿using LetsJam.Data;
+using LetsJam.Models.Transaction;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsJam.Data
+namespace LetsJam.Models.Product
 {
-    public class Product
+    public class ProductDetail
     {
-        [Key]
         public string SKU { get; set; }
-
-        [Required]
-        public Guid OwnerId { get; set; }
-
-        [Required]
         public string Name { get; set; }
-
-        [Required]
         public string Description { get; set; }
 
-        [Required]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        [Required]
+        [Display(Name = "Number In Stock")]
         public int NumberInStock { get; set; }
+        public virtual ICollection<TransactionList4Product> Transactions { get; set; } = new List<TransactionList4Product>();
 
-        public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
     }
 }

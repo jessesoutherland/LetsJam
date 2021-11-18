@@ -5,16 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsJam.Data
+namespace LetsJam.Models.Product
 {
-    public class Product
+    public class ProductCreate
     {
-        [Key]
-        public string SKU { get; set; }
-
         [Required]
-        public Guid OwnerId { get; set; }
-
+        public string SKU { get; set; }
         [Required]
         public string Name { get; set; }
 
@@ -27,7 +23,5 @@ namespace LetsJam.Data
 
         [Required]
         public int NumberInStock { get; set; }
-
-        public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
     }
 }

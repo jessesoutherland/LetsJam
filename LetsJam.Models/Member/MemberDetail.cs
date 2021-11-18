@@ -1,4 +1,6 @@
 ﻿using LetsJam.Data;
+using LetsJam.Models.Enrollment;
+using LetsJam.Models.Transaction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +35,7 @@ namespace LetsJam.Models.Member
         [Display(Name = "Current Student")]
         public bool IsStudent { get; set; }
 
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<EnrollmentList> Enrollments { get; set; }
+        public virtual ICollection<TransactionList4Member> Transactions { get; set; }
     }
 }

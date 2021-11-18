@@ -3,7 +3,7 @@ namespace LetsJam.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,7 @@ namespace LetsJam.Data.Migrations
                     {
                         MemberId = c.Int(nullable: false),
                         LessonId = c.Int(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
                         DifficultyLevel = c.String(nullable: false),
                     })
                 .PrimaryKey(t => new { t.MemberId, t.LessonId })
@@ -26,6 +27,7 @@ namespace LetsJam.Data.Migrations
                 c => new
                     {
                         LessonId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
                         Instrument = c.String(nullable: false),
                         Description = c.String(nullable: false),
                     })
@@ -36,6 +38,7 @@ namespace LetsJam.Data.Migrations
                 c => new
                     {
                         MemberId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
                         Email = c.String(),
@@ -45,10 +48,28 @@ namespace LetsJam.Data.Migrations
                 .PrimaryKey(t => t.MemberId);
             
             CreateTable(
+                "dbo.Transaction",
+                c => new
+                    {
+                        TransactionId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
+                        SKU = c.String(maxLength: 128),
+                        MemberId = c.Int(nullable: false),
+                        DateOfTransaction = c.DateTime(nullable: false),
+                        NumberOfProductPurchased = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.TransactionId)
+                .ForeignKey("dbo.Member", t => t.MemberId, cascadeDelete: true)
+                .ForeignKey("dbo.Product", t => t.SKU)
+                .Index(t => t.SKU)
+                .Index(t => t.MemberId);
+            
+            CreateTable(
                 "dbo.Product",
                 c => new
                     {
                         SKU = c.String(nullable: false, maxLength: 128),
+                        OwnerId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
@@ -79,22 +100,6 @@ namespace LetsJam.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.IdentityRole_Id)
                 .Index(t => t.ApplicationUser_Id);
-            
-            CreateTable(
-                "dbo.Transaction",
-                c => new
-                    {
-                        TransactionId = c.Int(nullable: false, identity: true),
-                        SKU = c.String(maxLength: 128),
-                        MemberId = c.Int(nullable: false),
-                        DateOfTransaction = c.DateTime(nullable: false),
-                        NumberOfProductPurchased = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.TransactionId)
-                .ForeignKey("dbo.Member", t => t.MemberId, cascadeDelete: true)
-                .ForeignKey("dbo.Product", t => t.SKU)
-                .Index(t => t.SKU)
-                .Index(t => t.MemberId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -142,19 +147,6 @@ namespace LetsJam.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.ApplicationUser_Id);
             
-            CreateTable(
-                "dbo.ProductMember",
-                c => new
-                    {
-                        Product_SKU = c.String(nullable: false, maxLength: 128),
-                        Member_MemberId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Product_SKU, t.Member_MemberId })
-                .ForeignKey("dbo.Product", t => t.Product_SKU, cascadeDelete: true)
-                .ForeignKey("dbo.Member", t => t.Member_MemberId, cascadeDelete: true)
-                .Index(t => t.Product_SKU)
-                .Index(t => t.Member_MemberId);
-            
         }
         
         public override void Down()
@@ -162,31 +154,26 @@ namespace LetsJam.Data.Migrations
             DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
-            DropForeignKey("dbo.Transaction", "SKU", "dbo.Product");
-            DropForeignKey("dbo.Transaction", "MemberId", "dbo.Member");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.Enrollment", "MemberId", "dbo.Member");
-            DropForeignKey("dbo.ProductMember", "Member_MemberId", "dbo.Member");
-            DropForeignKey("dbo.ProductMember", "Product_SKU", "dbo.Product");
+            DropForeignKey("dbo.Transaction", "SKU", "dbo.Product");
+            DropForeignKey("dbo.Transaction", "MemberId", "dbo.Member");
             DropForeignKey("dbo.Enrollment", "LessonId", "dbo.Lesson");
-            DropIndex("dbo.ProductMember", new[] { "Member_MemberId" });
-            DropIndex("dbo.ProductMember", new[] { "Product_SKU" });
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.Transaction", new[] { "MemberId" });
-            DropIndex("dbo.Transaction", new[] { "SKU" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Transaction", new[] { "MemberId" });
+            DropIndex("dbo.Transaction", new[] { "SKU" });
             DropIndex("dbo.Enrollment", new[] { "LessonId" });
             DropIndex("dbo.Enrollment", new[] { "MemberId" });
-            DropTable("dbo.ProductMember");
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
-            DropTable("dbo.Transaction");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
             DropTable("dbo.Product");
+            DropTable("dbo.Transaction");
             DropTable("dbo.Member");
             DropTable("dbo.Lesson");
             DropTable("dbo.Enrollment");

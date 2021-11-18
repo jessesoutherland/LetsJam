@@ -16,15 +16,17 @@ namespace LetsJam.Data
         [Required]
         public Guid OwnerId { get; set; }
 
+        [Required]
         [ForeignKey(nameof(Product))]
         public string SKU { get; set; }
 
+        [Required]
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime DateOfTransaction { get; set; }
+        public DateTimeOffset DateOfTransaction { get; set; }
 
         [Required]
         public int NumberOfProductPurchased { get; set; }

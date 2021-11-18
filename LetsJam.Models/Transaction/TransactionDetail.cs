@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsJam.Services
+namespace LetsJam.Models.Transaction
 {
-    public class Class1
+    public class TransactionDetail
     {
     }
 }

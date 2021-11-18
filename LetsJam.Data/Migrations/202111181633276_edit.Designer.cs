@@ -7,13 +7,13 @@ namespace LetsJam.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class updates : IMigrationMetadata
+    public sealed partial class edit : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updates));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(edit));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111162130508_updates"; }
+            get { return "202111181633276_edit"; }
         }
         
         string IMigrationMetadata.Source
