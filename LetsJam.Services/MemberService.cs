@@ -62,9 +62,7 @@ namespace LetsJam.Services
                 return new MemberDetail
                 {
                     MemberId = entity.MemberId,
-                    FirstName = entity.FirstName,
-                    LastName = entity.LastName,
-                    FullName = entity.FullName,
+                    FullName = entity.FirstName + " " + entity.LastName,
                     Email = entity.Email,
                     Phone = entity.Phone,
                     IsStudent = entity.IsStudent,

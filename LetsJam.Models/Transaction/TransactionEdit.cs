@@ -8,5 +8,8 @@ namespace LetsJam.Models.Transaction
 {
     public class TransactionEdit
     {
+        public string SKU { get; set; }
+        public int MemberId { get; set; }
+        public int NumberOfProductPurchased { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace LetsJam.Models.Product
 {
     public class ProductList
     {
+        public string SKU { get; set; }
         public string Name { get; set; }
 
         [DataType(DataType.Currency)]

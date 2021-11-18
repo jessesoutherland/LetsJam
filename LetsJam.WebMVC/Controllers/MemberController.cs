@@ -17,8 +17,8 @@ namespace LetsJam.WebMVC.Controllers
         // GET: Member
         public ActionResult Index()
         {
-            MemberService service = CreateMemberService();
-            var model = service.GetAllMembers();
+            MemberService svc = CreateMemberService();
+            var model = svc.GetAllMembers();
             return View(model);
         }
 
@@ -34,9 +34,9 @@ namespace LetsJam.WebMVC.Controllers
             if (!ModelState.IsValid)
                 return View(member);
 
-            var service = CreateMemberService();
+            var svc = CreateMemberService();
 
-            if (service.CreateMember(member))
+            if (svc.CreateMember(member))
             {
                 TempData["SaveResult"] = "The member was created.";
                 return RedirectToAction("Index");
@@ -114,8 +114,8 @@ namespace LetsJam.WebMVC.Controllers
         private MemberService CreateMemberService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new MemberService(userId);
-            return service;
+            var svc = new MemberService(userId);
+            return svc;
         }
     }
 }

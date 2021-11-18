@@ -48,10 +48,60 @@
         <dd>
             @Html.DisplayFor(model => model.IsStudent)
         </dd>
-
     </dl>
 </div>
+
+<h3>Transactions:</h3>
+
+<hr />
+<table class="table">
+    @try
+    {
+        if (Model.Transactions.ElementAt(0) != null)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).TransactionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).DateOfTransaction)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).NumberOfProductPurchased)
+                </th>
+            </tr>
+        }
+
+    }
+    catch (Exception)
+    {
+        @Html.Raw("<p>There are no transactions to display.</p>")
+
+
+    }
+
+    @foreach (var prop in Model.Transactions)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => prop.TransactionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => prop.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => prop.DateOfTransaction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => prop.NumberOfProductPurchased)
+            </td>
+        </tr>
+    }
+</table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MemberId}) |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

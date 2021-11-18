@@ -10,5 +10,6 @@ namespace LetsJam.Models.Transaction
     {
         public string SKU { get; set; }
         public int MemberId { get; set; }
+        public int NumberOfProductPurchased { get; set; }
     }
 }

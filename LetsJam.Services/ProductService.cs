@@ -40,6 +40,7 @@ namespace LetsJam.Services
             {
                 var query = ctx.Products.Where(p => p.OwnerId == _userId).Select(p => new ProductList
                 {
+                    SKU = p.SKU,
                     Name = p.Name,
                     Price = p.Price
                 });
@@ -62,7 +63,7 @@ namespace LetsJam.Services
                     Transactions = query.Transactions.Select(t => new TransactionList4Product
                     {
                         TransactionId = t.TransactionId,
-                        MemberName = t.Member.FullName,
+                        MemberName = t.Member.FirstName + " " + t.Member.LastName,
                         NumberOfProductPurchased = t.NumberOfProductPurchased,
                         DateOfTransaction = t.DateOfTransaction
                     }).ToList()
@@ -84,7 +85,7 @@ namespace LetsJam.Services
                     Transactions = query.Transactions.Select(t => new TransactionList4Product
                     {
                         TransactionId = t.TransactionId,
-                        MemberName = t.Member.FullName,
+                        MemberName = t.Member.FirstName + " " + t.Member.LastName,
                         NumberOfProductPurchased = t.NumberOfProductPurchased,
                         DateOfTransaction = t.DateOfTransaction
                         

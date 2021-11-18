@@ -81,6 +81,7 @@
     <Compile Include="Transaction\TransactionDetail.cs" />
     <Compile Include="Transaction\TransactionEdit.cs" />
     <Compile Include="Member\TransactionList4Member.cs" />
+    <Compile Include="Transaction\TransactionList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
