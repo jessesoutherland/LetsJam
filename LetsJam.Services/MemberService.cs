@@ -62,21 +62,23 @@ namespace LetsJam.Services
                 return new MemberDetail
                 {
                     MemberId = entity.MemberId,
-                    FullName = entity.FirstName + " " + entity.LastName,
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
                     Email = entity.Email,
                     Phone = entity.Phone,
                     IsStudent = entity.IsStudent,
-                    Enrollments = entity.Enrollments.Select(b => new EnrollmentList
-                    {
-                        //LessonId = b.LessonId,
-                        //DifficultyLevel = b.DifficultyLevel,
-                    }).ToList(),
                     Transactions = entity.Transactions.Select(t => new TransactionList4Member
                     {
                         TransactionId = t.TransactionId,
                         ProductName = t.Product.Name,
                         DateOfTransaction = t.DateOfTransaction,
                         NumberOfProductPurchased = t.NumberOfProductPurchased
+                    }).ToList(),
+                    Enrollments = entity.Enrollments.Select(e => new EnrollmentList4Member
+                    {
+                        EnrollmentId = e.EnrollmentId,
+                        Instrument = e.Lesson.Instrument,
+                        DifficultyLevel = e.DifficultyLevel
                     }).ToList()
                 };
             }

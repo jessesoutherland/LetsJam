@@ -48,13 +48,7 @@ namespace LetsJam.WebMVC.Controllers
             var model = svc.GetProductBySKU(sku);
             return View(model);
         }
-        [ActionName("Details")]
-        public ActionResult DetailsByName(string name)
-        {
-            var svc = CreateProductService();
-            var model = svc.GetProductByName(name);
-            return View(model);
-        }
+
         public ActionResult Edit(string sku)
         {
             var svc = CreateProductService();

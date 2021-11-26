@@ -70,13 +70,17 @@
     <Compile Include="Lesson.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202111172110211_initial.cs" />
-    <Compile Include="Migrations\202111172110211_initial.Designer.cs">
-      <DependentUpon>202111172110211_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202111232009041_init.cs" />
+    <Compile Include="Migrations\202111232009041_init.Designer.cs">
+      <DependentUpon>202111232009041_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111181633276_edit.cs" />
-    <Compile Include="Migrations\202111181633276_edit.Designer.cs">
-      <DependentUpon>202111181633276_edit.cs</DependentUpon>
+    <Compile Include="Migrations\202111232054414_prop edit.cs" />
+    <Compile Include="Migrations\202111232054414_prop edit.Designer.cs">
+      <DependentUpon>202111232054414_prop edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111241540153_instock.cs" />
+    <Compile Include="Migrations\202111241540153_instock.Designer.cs">
+      <DependentUpon>202111241540153_instock.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
@@ -88,11 +92,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111172110211_initial.resx">
-      <DependentUpon>202111172110211_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111232009041_init.resx">
+      <DependentUpon>202111232009041_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111181633276_edit.resx">
-      <DependentUpon>202111181633276_edit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111232054414_prop edit.resx">
+      <DependentUpon>202111232054414_prop edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111241540153_instock.resx">
+      <DependentUpon>202111241540153_instock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

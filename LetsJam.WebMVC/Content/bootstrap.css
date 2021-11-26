@@ -1,9 +1,4 @@
-/*!
- * Bootstrap v3.4.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -5036,7 +5031,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;*/
 }
 .jumbotron h1,
 .jumbotron .h1 {

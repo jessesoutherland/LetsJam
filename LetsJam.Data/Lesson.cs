@@ -18,9 +18,6 @@ namespace LetsJam.Data
         [Required]
         public string Instrument { get; set; }
 
-        [Required]
-        public string Description { get; set; }
-
         public virtual ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
     }
 }

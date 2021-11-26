@@ -52,7 +52,58 @@
 
     </dl>
 </div>
+
+<hr />
+<h3>Transactions:</h3>
+
+<table class="table">
+    @try
+    {
+        if (Model.Transactions.ElementAt(0) != null)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).TransactionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).MemberName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).NumberOfProductPurchased)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).DateOfTransaction)
+                </th>
+            </tr>
+        }
+
+    }
+    catch (Exception)
+    {
+        @Html.Raw("<p>There are no transactions to display.</p>")
+
+
+    }
+
+    @foreach (var prop in Model.Transactions)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => prop.TransactionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => prop.MemberName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => prop.NumberOfProductPurchased)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => prop.DateOfTransaction)
+            </td>
+        </tr>
+    }
+</table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new {  sku = Model.SKU }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

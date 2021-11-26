@@ -35,7 +35,7 @@ namespace LetsJam.Models.Member
         [Display(Name = "Current Student")]
         public bool IsStudent { get; set; }
 
-        public virtual ICollection<EnrollmentList> Enrollments { get; set; }
+        public virtual ICollection<EnrollmentList4Member> Enrollments { get; set; }
         public virtual ICollection<TransactionList4Member> Transactions { get; set; }
     }
 }

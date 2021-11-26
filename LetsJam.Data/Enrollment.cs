@@ -10,11 +10,14 @@ namespace LetsJam.Data
 {
     public class Enrollment
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        public int EnrollmentId { get; set; }
+
+        [Required]
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
 
-        [Key, Column(Order = 1)]
+        [Required]
         [ForeignKey(nameof(Lesson))]
         public int LessonId { get; set; }
 
@@ -24,6 +27,8 @@ namespace LetsJam.Data
         [Required]
         public string DifficultyLevel { get; set; }
 
+        [Required]
+        public DateTime StartDate { get; set; }
         public virtual Member Member { get; set; }
         public virtual Lesson Lesson { get; set; }
     }

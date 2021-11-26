@@ -70,29 +70,6 @@ namespace LetsJam.Services
                 };
             }
         }
-        public ProductDetail GetProductByName(string name)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query = ctx.Products.Single(p => p.OwnerId == _userId && p.Name == name);
-                return new ProductDetail
-                {
-                    SKU = query.SKU,
-                    Name = query.Name,
-                    Description = query.Description,
-                    Price = query.Price,
-                    NumberInStock = query.NumberInStock,
-                    Transactions = query.Transactions.Select(t => new TransactionList4Product
-                    {
-                        TransactionId = t.TransactionId,
-                        MemberName = t.Member.FirstName + " " + t.Member.LastName,
-                        NumberOfProductPurchased = t.NumberOfProductPurchased,
-                        DateOfTransaction = t.DateOfTransaction
-                        
-                    }).ToList()
-                };
-            }
-        }
         public bool UpdateProduct(ProductEdit product)
         {
             using(var ctx = new ApplicationDbContext())

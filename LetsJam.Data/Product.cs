@@ -28,6 +28,13 @@ namespace LetsJam.Data
         [Required]
         public int NumberInStock { get; set; }
 
+        public bool IsInStock
+        {
+            get
+            {
+                return NumberInStock > 0;
+            }
+        }
         public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
     }
 }

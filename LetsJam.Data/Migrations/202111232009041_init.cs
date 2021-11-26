@@ -3,7 +3,7 @@ namespace LetsJam.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -11,12 +11,13 @@ namespace LetsJam.Data.Migrations
                 "dbo.Enrollment",
                 c => new
                     {
+                        EnrollmentId = c.Int(nullable: false, identity: true),
                         MemberId = c.Int(nullable: false),
                         LessonId = c.Int(nullable: false),
                         OwnerId = c.Guid(nullable: false),
                         DifficultyLevel = c.String(nullable: false),
                     })
-                .PrimaryKey(t => new { t.MemberId, t.LessonId })
+                .PrimaryKey(t => t.EnrollmentId)
                 .ForeignKey("dbo.Lesson", t => t.LessonId, cascadeDelete: true)
                 .ForeignKey("dbo.Member", t => t.MemberId, cascadeDelete: true)
                 .Index(t => t.MemberId)
@@ -53,14 +54,14 @@ namespace LetsJam.Data.Migrations
                     {
                         TransactionId = c.Int(nullable: false, identity: true),
                         OwnerId = c.Guid(nullable: false),
-                        SKU = c.String(maxLength: 128),
+                        SKU = c.String(nullable: false, maxLength: 128),
                         MemberId = c.Int(nullable: false),
-                        DateOfTransaction = c.DateTime(nullable: false),
+                        DateOfTransaction = c.DateTimeOffset(nullable: false, precision: 7),
                         NumberOfProductPurchased = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.TransactionId)
                 .ForeignKey("dbo.Member", t => t.MemberId, cascadeDelete: true)
-                .ForeignKey("dbo.Product", t => t.SKU)
+                .ForeignKey("dbo.Product", t => t.SKU, cascadeDelete: true)
                 .Index(t => t.SKU)
                 .Index(t => t.MemberId);
             

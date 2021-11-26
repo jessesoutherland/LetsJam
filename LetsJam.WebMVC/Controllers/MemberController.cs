@@ -18,8 +18,8 @@ namespace LetsJam.WebMVC.Controllers
         public ActionResult Index()
         {
             MemberService svc = CreateMemberService();
-            var model = svc.GetAllMembers();
-            return View(model);
+            var list = svc.GetAllMembers();
+            return View(list);
         }
 
 
@@ -42,7 +42,7 @@ namespace LetsJam.WebMVC.Controllers
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Member could not be created.");
+            ModelState.AddModelError("", "The member could not be created.");
 
             return View(member);
         }
@@ -74,7 +74,7 @@ namespace LetsJam.WebMVC.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, MemberEdit member)
+        public ActionResult Edit(MemberEdit member)
         {
             if (!ModelState.IsValid) return View(member);
 
