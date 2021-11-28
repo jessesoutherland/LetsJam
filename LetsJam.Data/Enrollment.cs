@@ -16,10 +16,12 @@ namespace LetsJam.Data
         [Required]
         [ForeignKey(nameof(Member))]
         public int MemberId { get; set; }
+        public string StudentName { get; set; }
 
         [Required]
         [ForeignKey(nameof(Lesson))]
         public int LessonId { get; set; }
+        public string Instrument { get; set; }
 
         [Required]
         public Guid OwnerId { get; set; }
@@ -28,6 +30,7 @@ namespace LetsJam.Data
         public string DifficultyLevel { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
         public virtual Member Member { get; set; }
         public virtual Lesson Lesson { get; set; }

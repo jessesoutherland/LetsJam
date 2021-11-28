@@ -17,7 +17,7 @@ namespace LetsJam.Models.Product
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        [Display(Name = "Number In Stock")]
+        [Display(Name = "Inventory")]
         public int NumberInStock { get; set; }
     }
 }

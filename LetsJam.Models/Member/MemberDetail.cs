@@ -13,7 +13,7 @@ namespace LetsJam.Models.Member
 {
     public class MemberDetail
     {
-        [Display(Name = "Member ID")]
+        [Display(Name = "Jammer ID")]
         public int MemberId { get; set; }
 
         [Display(Name = "First Name")]
@@ -22,9 +22,6 @@ namespace LetsJam.Models.Member
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Name")]
-        public string FullName { get; set; }
-
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -32,7 +29,7 @@ namespace LetsJam.Models.Member
         [Display(Name = "Phone Number")]
         public string Phone { get; set; }
 
-        [Display(Name = "Current Student")]
+        [Display(Name = "Student?")]
         public bool IsStudent { get; set; }
 
         public virtual ICollection<EnrollmentList4Member> Enrollments { get; set; }

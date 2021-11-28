@@ -24,6 +24,7 @@ namespace LetsJam.WebMVC.Controllers
         {
             var svc = CreateTransactionService();
             ViewBag.Products = svc.GetAllProductSKUs();
+            ViewBag.Members = svc.GetAllMemberIds();
             return View();
         }
 
@@ -71,6 +72,8 @@ namespace LetsJam.WebMVC.Controllers
         {
             var svc = CreateTransactionService();
             var trans = svc.GetTransactionById(id);
+            ViewBag.Products = svc.GetAllProductSKUs();
+            ViewBag.Members = svc.GetAllMemberIds();
             var model = new TransactionEdit
             {
                 TransactionId = trans.TransactionId,

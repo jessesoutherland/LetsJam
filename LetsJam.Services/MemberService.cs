@@ -47,8 +47,8 @@ namespace LetsJam.Services
                 {
                     MemberId = m.MemberId,
                     FullName = m.FirstName + " " + m.LastName,
+                    LastName = m.LastName,
                     IsStudent = m.IsStudent
-
                 });
                 return query.ToArray();
             }
@@ -76,7 +76,6 @@ namespace LetsJam.Services
                     }).ToList(),
                     Enrollments = entity.Enrollments.Select(e => new EnrollmentList4Member
                     {
-                        EnrollmentId = e.EnrollmentId,
                         Instrument = e.Lesson.Instrument,
                         DifficultyLevel = e.DifficultyLevel
                     }).ToList()
@@ -94,7 +93,6 @@ namespace LetsJam.Services
                 query.LastName = member.LastName;
                 query.Email = member.Email;
                 query.Phone = member.Phone;
-                query.IsStudent = member.IsStudent;
 
                 return ctx.SaveChanges() == 1;
             }

@@ -9,14 +9,16 @@ namespace LetsJam.Models
 {
     public class MemberList
     {
-        [Display(Name ="Member ID")]
+        [Display(Name ="Jammer ID")]
         public int MemberId { get; set; }
 
-        [Display(Name="Name")]
+        [Display(Name="Jammer")]
         public string FullName { get; set; }
 
+        public string LastName { get; set; }
+
         [UIHint("Student")]
-        [Display(Name ="Current Student")]
+        [Display(Name ="Student?")]
         public bool IsStudent { get; set; }
     }
 }

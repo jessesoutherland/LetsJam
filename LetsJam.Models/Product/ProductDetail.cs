@@ -12,13 +12,14 @@ namespace LetsJam.Models.Product
     public class ProductDetail
     {
         public string SKU { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
 
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        [Display(Name = "Number In Stock")]
+        [Display(Name = "Inventory")]
         public int NumberInStock { get; set; }
         public virtual ICollection<TransactionList4Product> Transactions { get; set; } = new List<TransactionList4Product>();
 

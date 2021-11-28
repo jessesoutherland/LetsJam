@@ -25,7 +25,7 @@ namespace LetsJam.Models.Member
         public string Phone { get; set; }
 
         [DefaultValue(false)]
-        [Display(Name = "Current Student")]
+        [Display(Name = "Student?")]
         public bool IsStudent { get; set; }
     }
 }

@@ -66,8 +66,7 @@ namespace LetsJam.WebMVC.Controllers
                 FirstName = member.FirstName,
                 LastName = member.LastName,
                 Email = member.Email,
-                Phone = member.Phone,
-                IsStudent = member.IsStudent
+                Phone = member.Phone
             };
 
             return View(model);

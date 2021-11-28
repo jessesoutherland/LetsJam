@@ -10,7 +10,7 @@ namespace LetsJam.Models.Member
 {
     public class MemberEdit
     {
-        [Display(Name = "Member ID")]
+        [Display(Name = "Jammer ID")]
         public int MemberId { get; set; }
         
         [Display(Name = "First Name")]
@@ -25,7 +25,6 @@ namespace LetsJam.Models.Member
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
-        [Display(Name = "Current Student")]
         [UIHint("Student")]
         public bool IsStudent { get; set; }
     }

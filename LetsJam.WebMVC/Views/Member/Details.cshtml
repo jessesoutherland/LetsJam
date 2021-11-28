@@ -120,9 +120,6 @@
         {
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Enrollments.ElementAt(0).EnrollmentId)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Enrollments.ElementAt(0).Instrument)
                 </th>
                 <th>
@@ -142,9 +139,6 @@
     @foreach (var prop in Model.Enrollments)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => prop.EnrollmentId)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => prop.Instrument)
             </td>

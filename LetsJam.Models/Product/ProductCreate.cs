@@ -11,6 +11,7 @@ namespace LetsJam.Models.Product
     {
         [Required]
         public string SKU { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -22,6 +23,7 @@ namespace LetsJam.Models.Product
         public decimal Price { get; set; }
 
         [Required]
+        [Display(Name = "Inventory")]
         public int NumberInStock { get; set; }
     }
 }

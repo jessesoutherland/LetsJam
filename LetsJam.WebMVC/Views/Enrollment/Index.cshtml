@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h1 class="text-center">Rock Stars</h1>
+<br />
+<br />
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -22,10 +20,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.EnrollmentId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MemberName)
+            @Html.DisplayNameFor(model => model.StudentName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Instrument)
@@ -33,17 +28,16 @@
         <th>
             @Html.DisplayNameFor(model => model.DifficultyLevel)
         </th>
-        <th></th>
+        <th>
+            @Html.ActionLink("New Rock Star", "Create")
+        </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(x => x.Instrument))
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MemberName)
+                @Html.DisplayFor(modelItem => item.StudentName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Instrument)
@@ -52,9 +46,9 @@
                 @Html.DisplayFor(modelItem => item.DifficultyLevel)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.EnrollmentId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.EnrollmentId }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.EnrollmentId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.EnrollmentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EnrollmentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EnrollmentId })
             </td>
         </tr>
     }

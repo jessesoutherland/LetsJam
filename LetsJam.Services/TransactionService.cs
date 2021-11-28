@@ -30,7 +30,7 @@ namespace LetsJam.Services
                 NumberOfProductPurchased = trans.NumberOfProductPurchased
             };
 
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Transactions.Add(model);
 
@@ -66,7 +66,7 @@ namespace LetsJam.Services
         //}
         public IEnumerable<TransactionList> GetAllTransactions()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Transactions.Where(t => t.OwnerId == _userId).Select(t => new TransactionList
                 {
@@ -81,7 +81,7 @@ namespace LetsJam.Services
         }
         public TransactionDetail GetTransactionById(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Transactions.Single(t => t.OwnerId == _userId && t.TransactionId == id);
 
@@ -95,12 +95,12 @@ namespace LetsJam.Services
                     NumberOfProductPurchased = query.NumberOfProductPurchased,
                     DateOfTransaction = query.DateOfTransaction
                 };
-            }        
+            }
         }
 
         public bool UpdateTransaction(TransactionEdit trans)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Transactions.Single(t => t.OwnerId == _userId && t.TransactionId == trans.TransactionId);
 
@@ -126,17 +126,30 @@ namespace LetsJam.Services
         //Helper Methods
         public List<SelectListItem> GetAllProductSKUs()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Products.ToList().Select(p => new SelectListItem
+                var query = ctx.Products.ToList().Where(i => i.OwnerId == _userId).Select(p => new SelectListItem
                 {
                     Value = p.SKU,
-                    Text = p.Name
+                    Text = p.SKU
                 }).ToList();
 
                 return query;
             }
         }
+        public List<SelectListItem> GetAllMemberIds()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Members.ToList().Where(i => i.OwnerId == _userId).Select(p => new SelectListItem
+                {
+                    Value = p.MemberId.ToString(),
+                    Text = p.FirstName + " " + p.LastName
+                }).ToList();
 
+                return query;
+            }
+
+        }
     }
 }
