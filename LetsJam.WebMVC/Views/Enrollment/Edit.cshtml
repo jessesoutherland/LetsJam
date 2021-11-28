@@ -21,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MemberId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.MemberId, ViewBag.Members as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DropDownListFor(model => model.MemberId, ViewBag.Members as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "control-label col-md-4" })
                 @Html.ValidationMessageFor(model => model.MemberId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LessonId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.LessonId, ViewBag.Lessons as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DropDownListFor(model => model.LessonId, ViewBag.Lessons as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "control-label col-md-4" })
                 @Html.ValidationMessageFor(model => model.LessonId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -37,7 +37,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DifficultyLevel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DifficultyLevel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("DifficultyLevel", new List<SelectListItem>
+      {
+          new SelectListItem{ Text="Select Level", Value = "0", Disabled = true, Selected = true},
+          new SelectListItem{ Text="Beginner", Value = "Beginner"},
+          new SelectListItem{ Text="Intermediate", Value = "Intermediate"},
+          new SelectListItem{ Text="Why Are You Here?", Value = "Why Are You Here?"},
+
+      }, new { htmlAttributes = new { } })
                 @Html.ValidationMessageFor(model => model.DifficultyLevel, "", new { @class = "text-danger" })
             </div>
         </div>
