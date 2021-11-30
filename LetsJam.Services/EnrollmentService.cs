@@ -125,6 +125,16 @@ namespace LetsJam.Services
             }
 
         }
+        public List<SelectListItem> GetAllSkills()
+        {
+            var sl = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Beginner", Value = "Beginner" },
+                new SelectListItem { Text = "Intermediate", Value = "Intermediate" },
+                new SelectListItem { Text = "Why Are You Here?", Value = "Why Are You Here?" }
+            }.ToList();
+            return sl;
+        }
     }
 }
 

@@ -9,6 +9,8 @@ namespace LetsJam.Models.Enrollment
 {
     public class EnrollmentList4Lesson
     {
+        [Display(Name ="Enrollment ID")]
+        public int EnrollmentId { get; set; }
         [Display(Name = "Jammer")]
         public string StudentName { get; set; }
 
@@ -18,7 +20,6 @@ namespace LetsJam.Models.Enrollment
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
-
 
     }
 }

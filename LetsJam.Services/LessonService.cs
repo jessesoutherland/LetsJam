@@ -56,6 +56,7 @@ namespace LetsJam.Services
                     Instrument = query.Instrument,
                     Enrollments = query.Enrollments.Select(e => new EnrollmentList4Lesson
                     {
+                        EnrollmentId = e.EnrollmentId,
                         StudentName = e.Member.FirstName + " " + e.Member.LastName,
                         DifficultyLevel = e.DifficultyLevel
                     }).ToList()

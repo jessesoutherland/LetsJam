@@ -62,7 +62,7 @@
 <hr />
 <h3>Transactions:</h3>
 
-<table class="table">
+<table class="table" id="toppers">
     @try
     {
         if (Model.Transactions.ElementAt(0) != null)
@@ -75,10 +75,10 @@
                     @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).ProductName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).DateOfTransaction)
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).NumberOfProductPurchased)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).NumberOfProductPurchased)
+                    @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).DateOfTransaction)
                 </th>
             </tr>
         }
@@ -101,10 +101,10 @@
                 @Html.DisplayFor(modelItem => prop.ProductName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => prop.DateOfTransaction)
+                @Html.DisplayFor(modelItem => prop.NumberOfProductPurchased)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => prop.NumberOfProductPurchased)
+                @Html.DisplayFor(modelItem => prop.DateOfTransaction)
             </td>
         </tr>
     }

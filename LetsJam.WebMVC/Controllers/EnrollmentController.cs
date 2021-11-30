@@ -24,6 +24,7 @@ namespace LetsJam.WebMVC.Controllers
             var svc = CreateEnrollmentService();
             ViewBag.Members = svc.GetAllMemberIds();
             ViewBag.Lessons = svc.GetAllLessonIds();
+            ViewBag.Skills = svc.GetAllSkills();
             return View();
         }
 
@@ -56,6 +57,7 @@ namespace LetsJam.WebMVC.Controllers
             var query = svc.GetEnrollmentById(id);
             ViewBag.Members = svc.GetAllMemberIds();
             ViewBag.Lessons = svc.GetAllLessonIds();
+            ViewBag.Skills = svc.GetAllSkills();
             var model = new EnrollmentEdit
             {
                 EnrollmentId = query.EnrollmentId,

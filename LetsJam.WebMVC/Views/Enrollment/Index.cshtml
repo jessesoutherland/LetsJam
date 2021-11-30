@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h1 class="text-center">Rock Stars</h1>
+<h1 class="text-center" id="titles">Rock Stars</h1>
 <br />
 <br />
 
@@ -18,24 +18,24 @@
     </div>
 }
 <table class="table">
-    <tr>
-        <th>
+    <tr id="toppers">
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.StudentName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Instrument)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.DifficultyLevel)
         </th>
-        <th>
-            @Html.ActionLink("New Rock Star", "Create")
+        <th class="text-right">
+            @Html.ActionLink("{New Rock Star}", "Create")
         </th>
     </tr>
 
     @foreach (var item in Model.OrderBy(x => x.Instrument))
     {
-        <tr>
+        <tr class="text-center">
             <td>
                 @Html.DisplayFor(modelItem => item.StudentName)
             </td>
@@ -45,7 +45,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DifficultyLevel)
             </td>
-            <td>
+            <td class="text-right" id="links">
                 @Html.ActionLink("Edit", "Edit", new { id = item.EnrollmentId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.EnrollmentId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.EnrollmentId })

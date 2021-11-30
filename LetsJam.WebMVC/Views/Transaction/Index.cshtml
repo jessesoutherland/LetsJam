@@ -4,13 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h1 class="text-center">Sales</h1>
+<h1 class="text-center" id="titles">Sales</h1>
 <br />
 <br />
-
-<p class="text-center">
-    @Html.ActionLink("New Sale", "Create")
-</p>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -22,22 +18,24 @@
     </div>
 }
 <table class="table">
-    <tr>
-        <th>
+    <tr id="toppers">
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.MemberName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.DateOfTransaction)
         </th>
-        <th></th>
+        <th class="text-right">
+            @Html.ActionLink("{New Sale}", "Create")
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr class="text-center">
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
@@ -47,7 +45,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfTransaction)
             </td>
-            <td>
+            <td class="text-right" id="links">
                 @Html.ActionLink("Edit", "Edit", new { id = item.TransactionId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.TransactionId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.TransactionId })

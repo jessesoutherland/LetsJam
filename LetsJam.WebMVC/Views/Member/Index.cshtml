@@ -4,51 +4,50 @@
     ViewBag.Title = "Index";
 }
 
-<h1 class="text-center">Jammers</h1>
-<br />
-<br />
+    <h1 class="text-center" id="titles">Jammers</h1>
+    <br />
+    <br />
 
-<p class="text-center">
-    @Html.ActionLink("New Jammer", "Create")
-</p>
-
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsStudent)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model.OrderBy(x => x.LastName))
+    @if (TempData.ContainsKey("SaveResult"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsStudent, new { Id = item.MemberId })
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
-            </td>
-        </tr>
+        <div class="alert alert-success fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
     }
-</table>
+    <table class="table">
+        <tr id="toppers">
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.IsStudent)
+            </th>
+            <th class="text-right">
+                @Html.ActionLink("{New Jammer}", "Create")
+            </th>
+        </tr>
+
+        @foreach (var item in Model.OrderBy(x => x.LastName))
+        {
+            <tr class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsStudent, new { Id = item.MemberId })
+                </td>
+                <td class="text-right" id="links">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
+                </td>
+            </tr>
+        }
+    </table>
+
 @section scripts {
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {

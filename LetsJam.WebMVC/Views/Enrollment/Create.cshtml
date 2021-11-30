@@ -18,7 +18,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.MemberId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.MemberId, ViewBag.Members as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.DropDownListFor(model => model.MemberId, ViewBag.Members as IEnumerable<SelectListItem>, "Select Jammer", htmlAttributes: new { @class = "control-label col-md-4" })
             @Html.ValidationMessageFor(model => model.MemberId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -26,7 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.LessonId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.LessonId, ViewBag.Lessons as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.DropDownListFor(model => model.LessonId, ViewBag.Lessons as IEnumerable<SelectListItem>, "Select Lesson", htmlAttributes: new { @class = "control-label col-md-4" })
             @Html.ValidationMessageFor(model => model.LessonId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.DifficultyLevel, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.DifficultyLevel, ViewBag.Skills as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.DropDownListFor(model => model.DifficultyLevel, ViewBag.Skills as IEnumerable<SelectListItem>, "Select Level", htmlAttributes: new { @class = "control-label col-md-4" })
             @Html.ValidationMessageFor(model => model.DifficultyLevel, "", new { @class = "text-danger" })
         </div>
     </div>

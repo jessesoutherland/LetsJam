@@ -1,7 +1,15 @@
-﻿body {
+﻿@import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
-    /*background-image: url("assets/background.jpg")*/ 
+    font: 20px 'Droid Sans', sans-serif;
+    line-height: 1.5em;
+    background-color: #fff;
+    background-image: url("assets/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffad33;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -24,8 +32,89 @@ textarea {
     max-width: 280px;
 }
 
-#cards{
-    background-color: white;
-    min-height: 30em;
-   
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    color: #b3b3b3
+}
+
+#bottomtag {
+    backdrop-filter: blur(10px);
+}
+
+#stuff {
+    backdrop-filter: blur(20px);
+}
+
+#tri-opt {
+    float: right;
+}
+
+#titles {
+    padding-top: .25em;
+    font-family: Rockwell;
+    font-size: 4.25em;
+    color: #b3b3b3;
+    margin-bottom: -5px;
+}
+
+#toppers {
+    font-size: 1.5em;
+    color: #b3b3b3;
+}
+
+#headline {
+    font-family: Rockwell;
+    font-size: 6em;
+    color: #b3b3b3;
+    text-shadow: 2px 2px 5px black;
+    padding-bottom: .5em;
+}
+
+#slogan {
+    font-size: 1.30em;
+}
+
+.btn-success {
+    background-color: #bfbfbf;
+    color: #398439;
+    border-color: #47a447;
+    border-radius: 25px;
+}
+
+    .btn-success:hover,
+    .btn-success:focus,
+    .btn-success:active {
+        background-color: #47a447;
+        color: #FFF;
+        border-color: #398439;
+    }
+
+.btn-primary {
+    background-color: #bfbfbf;
+    color: #285e8e;
+    border-color: #3276b1;
+    border-radius: 25px;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
+        background-color: #3276b1;
+        color: #FFF;
+        border-color: #285e8e;
+    }
+#links {
+    color: #b3b3b3
 }
