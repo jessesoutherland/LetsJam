@@ -11,13 +11,13 @@ namespace LetsJam.Models.Transaction
     {
         public int TransactionId { get; set; }
 
-        [Display(Name = "Product")]
+        [Display(Name = "Product:")]
         public string SKU { get; set; }
 
-        [Display(Name = "Jammer")]
+        [Display(Name = "Jammer:")]
         public int MemberId { get; set; }
 
-        [Display(Name = "Quantity")]
+        [Display(Name = "Quantity:")]
         public int NumberOfProductPurchased { get; set; }
     }
 }

@@ -9,8 +9,10 @@ namespace LetsJam.Models.Lesson
 {
     public class LessonEdit
     {
-        [Display(Name = "Lesson ID")]
+        [Display(Name = "Lesson ID:")]
         public int LessonId { get; set; }
+
+        [Display(Name = "Instrument:")]
         public string Instrument { get; set; }
     }
 }

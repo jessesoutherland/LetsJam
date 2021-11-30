@@ -9,12 +9,13 @@ namespace LetsJam.Models.Transaction
 {
     public class TransactionCreate
     {
+        [Display(Name = "SKU:")]
         public string SKU { get; set; }
 
-        [Display(Name = "Jammer")]
+        [Display(Name = "Jammer:")]
         public int MemberId { get; set; }
 
-        [Display(Name = "Quantity")]
+        [Display(Name = "Quantity:")]
         public int NumberOfProductPurchased { get; set; }
     }
 }

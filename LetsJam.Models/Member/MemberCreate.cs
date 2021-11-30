@@ -11,16 +11,18 @@ namespace LetsJam.Models.Member
     public class MemberCreate
     {
         [Required]
-        [Display(Name = "First Name")]
+        [Display(Name = "First Name:")]
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "Last Name")]
+        [Display(Name = "Last Name:")]
         public string LastName { get; set; }
 
+        [Display(Name ="Email:")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Display(Name = "Phone:")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 

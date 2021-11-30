@@ -10,20 +10,24 @@ namespace LetsJam.Models.Product
     public class ProductCreate
     {
         [Required]
+        [Display(Name = "SKU:")]
         public string SKU { get; set; }
 
         [Required]
+        [Display(Name = "Name:")]
         public string Name { get; set; }
 
         [Required]
+        [Display(Name = "Description:")]
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Price:")]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
         [Required]
-        [Display(Name = "Inventory")]
+        [Display(Name = "Inventory:")]
         public int NumberInStock { get; set; }
     }
 }

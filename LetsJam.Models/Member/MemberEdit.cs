@@ -10,18 +10,20 @@ namespace LetsJam.Models.Member
 {
     public class MemberEdit
     {
-        [Display(Name = "Jammer ID")]
+        [Display(Name = "Jammer ID:")]
         public int MemberId { get; set; }
         
-        [Display(Name = "First Name")]
+        [Display(Name = "First Name:")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "Last Name:")]
         public string LastName { get; set; }
 
+        [Display(Name = "Email:")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Display(Name = "Phone:")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 

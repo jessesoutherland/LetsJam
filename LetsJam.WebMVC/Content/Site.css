@@ -57,16 +57,13 @@ textarea {
     backdrop-filter: blur(20px);
 }
 
-#tri-opt {
-    float: right;
-}
-
 #titles {
     padding-top: .25em;
     font-family: Rockwell;
     font-size: 4.25em;
     color: #b3b3b3;
     margin-bottom: -5px;
+    text-shadow: 2px 2px 5px black;
 }
 
 #toppers {
