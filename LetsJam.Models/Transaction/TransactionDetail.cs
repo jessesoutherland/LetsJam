@@ -9,23 +9,25 @@ namespace LetsJam.Models.Transaction
 {
     public class TransactionDetail
     {
-        [Display(Name = "Transaction ID")]
+        [Display(Name = "Transaction ID:")]
         public int TransactionId { get; set; }
+
+        [Display(Name ="SKU:")]
         public string SKU { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "Name:")]
         public string ProductName { get; set; }
 
-        [Display(Name = "Jammer ID")]
+        [Display(Name = "Jammer ID:")]
         public int MemberId { get; set; }
 
-        [Display(Name = "Jammer")]
+        [Display(Name = "Jammer:")]
         public string MemberName { get; set; }
 
-        [Display(Name = "Date of Sale")]
+        [Display(Name = "Date of Sale:")]
         public DateTimeOffset DateOfTransaction { get; set; }
 
-        [Display(Name = "Quantity")]
+        [Display(Name = "Quantity:")]
         public int NumberOfProductPurchased { get; set; }
     }
 }

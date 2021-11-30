@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace LetsJam.WebMVC.App_Start
 {
-    public class WebApiConfig
+    public static class WebApiConfig
     {
         public static void Register()
         {

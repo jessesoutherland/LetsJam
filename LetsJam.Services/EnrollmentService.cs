@@ -35,7 +35,7 @@ namespace LetsJam.Services
                 Member student = ctx.Members.Find(nroll.MemberId);
                 student.IsStudent = true;
 
-                return ctx.SaveChanges() == 2;
+                return ctx.SaveChanges() >= 1;
             }
         }
         public IEnumerable<EnrollmentList> GetAllEnrollments()

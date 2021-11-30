@@ -93,6 +93,7 @@ namespace LetsJam.Services
                 query.LastName = member.LastName;
                 query.Email = member.Email;
                 query.Phone = member.Phone;
+                query.IsStudent = member.IsStudent;
 
                 return ctx.SaveChanges() == 1;
             }

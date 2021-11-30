@@ -9,25 +9,25 @@ namespace LetsJam.Models.Enrollment
 {
     public class EnrollmentDetail
     {
-        [Display(Name = "Enrollment ID")]
+        [Display(Name = "Enrollment ID:")]
         public int EnrollmentId { get; set; }
 
-        [Display(Name = "Jammer ID")]
+        [Display(Name = "Jammer ID:")]
         public int MemberId { get; set; }
 
-        [Display(Name = "Jammer")]
+        [Display(Name = "Jammer:")]
         public string StudentName { get; set; }
 
-        [Display(Name = "Lesson")]
+        [Display(Name = "Lesson:")]
         public int LessonId { get; set; }
 
-        [Display(Name = "Instrument")]
+        [Display(Name = "Instrument:")]
         public string Instrument { get; set; }
 
-        [Display(Name = "Skill Level")]
+        [Display(Name = "Skill Level:")]
         public string DifficultyLevel { get; set; }
 
-        [Display(Name = "Start Date")]
+        [Display(Name = "Start Date:")]
         [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
 

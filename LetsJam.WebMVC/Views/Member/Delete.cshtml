@@ -4,7 +4,8 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete:</h2>
+<h2 class="text-center" id="titles">Delete Jammer</h2>
+<br />
 
 <div>
     <hr />
@@ -59,7 +60,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
