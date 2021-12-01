@@ -13,11 +13,14 @@
         <div id="content-wrap">
             <ul>
                 <li>@Html.ActionLink("HOME", "Index", "Home")</li>
-                <li>@Html.ActionLink("Jammers", "Index", "Member")</li>
-                <li>@Html.ActionLink("Rock Stars", "Index", "Enrollment")</li>
-                <li>@Html.ActionLink("Lessons", "Index", "Lesson")</li>
-                <li>@Html.ActionLink("Products", "Index", "Product")</li>
-                <li>@Html.ActionLink("Sales", "Index", "Transaction")</li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li> @Html.ActionLink("Jammers", "Index", "Member") </li>
+                    <li> @Html.ActionLink("Rock Stars", "Index", "Enrollment") </li>
+                    <li> @Html.ActionLink("Lessons", "Index", "Lesson") </li>
+                    <li> @Html.ActionLink("Products", "Index", "Product") </li>
+                    <li> @Html.ActionLink("Sales", "Index", "Transaction") </li>
+                }
                 <li> @Html.Partial("_LoginPartial")</li>
             </ul>
             <ul>
