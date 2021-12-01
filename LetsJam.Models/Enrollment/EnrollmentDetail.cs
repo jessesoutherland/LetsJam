@@ -18,7 +18,7 @@ namespace LetsJam.Models.Enrollment
         [Display(Name = "Jammer:")]
         public string StudentName { get; set; }
 
-        [Display(Name = "Lesson:")]
+        [Display(Name = "Lesson ID:")]
         public int LessonId { get; set; }
 
         [Display(Name = "Instrument:")]

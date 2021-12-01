@@ -4,10 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details:</h2>
+<h2 class="text-center" id="titles">Jammer Details</h2>
+<br />
+<br />
 
-<div>
-    <hr />
+<div id="borders">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.MemberId)
@@ -59,15 +60,15 @@
     </dl>
 </div>
 
-<hr />
-<h3>Transactions:</h3>
+<h3 id="subtitle">Transactions</h3>
+<br />
 
-<table class="table" id="toppers">
+<table class="table">
     @try
     {
         if (Model.Transactions.ElementAt(0) != null)
         {
-            <tr>
+            <tr id="toppers">
                 <th>
                     @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).TransactionId)
                 </th>
@@ -111,14 +112,14 @@
 </table>
 
 <hr />
-<h3>Enrollments:</h3>
-
+<h3 id="subtitle">Enrollments</h3>
+<br />
 <table class="table">
     @try
     {
         if (Model.Enrollments.ElementAt(0) != null)
         {
-            <tr>
+            <tr id="toppers">
                 <th>
                     @Html.DisplayNameFor(model => model.Enrollments.ElementAt(0).Instrument)
                 </th>
@@ -148,7 +149,7 @@
         </tr>
     }
 </table>
-<p>
+<p class="text-right">
     @Html.ActionLink("Edit", "Edit", new { id = Model.MemberId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

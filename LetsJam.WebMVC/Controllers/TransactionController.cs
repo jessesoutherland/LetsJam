@@ -22,10 +22,17 @@ namespace LetsJam.WebMVC.Controllers
         }
         public ActionResult Create()
         {
+            //var svc = CreateTransactionService();
+            //ViewBag.Products = svc.GetAllProductSKUs();
+            //ViewBag.Members = svc.GetAllMemberIds();
+            CreateViewBags();
+            return View();
+        }
+        public void CreateViewBags()
+        {
             var svc = CreateTransactionService();
             ViewBag.Products = svc.GetAllProductSKUs();
             ViewBag.Members = svc.GetAllMemberIds();
-            return View();
         }
 
         [HttpPost, ValidateAntiForgeryToken]
@@ -41,12 +48,21 @@ namespace LetsJam.WebMVC.Controllers
             if (stock == 0)
             {
                 ModelState.AddModelError("", "Product out of stock.");
+                CreateViewBags();
                 return View(trans);
             }
 
-            if(stock < trans.NumberOfProductPurchased)
+            if (stock < trans.NumberOfProductPurchased && stock == 1)
+            {
+                ModelState.AddModelError("", "SORRY! There is currently only " + stock + " in stock.");
+                CreateViewBags();
+                return View(trans);
+            }
+
+            if (stock < trans.NumberOfProductPurchased)
             {
                 ModelState.AddModelError("", "SORRY! There are currently only " + stock + " in stock.");
+                CreateViewBags();
                 return View(trans);
             }
 
@@ -54,7 +70,7 @@ namespace LetsJam.WebMVC.Controllers
 
             if (svc.CreateTransaction(trans))
             {
-                TempData["SaveResult"] = "The transaction was completed.";
+                TempData["SaveResult"] = "*The transaction was completed.";
                 return RedirectToAction("Index");
             };
 

@@ -37,7 +37,7 @@ namespace LetsJam.Services
                 Product product = ctx.Products.Find(trans.SKU);
                 product.NumberInStock -= trans.NumberOfProductPurchased;
 
-                return ctx.SaveChanges() == 2;
+                return ctx.SaveChanges() >= 1;
             }
         }
         public int CheckStock(TransactionCreate prod)
@@ -46,7 +46,7 @@ namespace LetsJam.Services
             {
                 var query = ctx.Products.Single(p => p.OwnerId == _userId && p.SKU == prod.SKU);
 
-                if (prod.NumberOfProductPurchased == 0)
+                if (query.NumberInStock == 0)
                     return 0;
 
                 return query.NumberInStock;

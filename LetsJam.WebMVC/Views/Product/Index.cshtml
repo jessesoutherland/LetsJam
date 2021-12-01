@@ -9,13 +9,14 @@
 
 @if (TempData.ContainsKey("SaveResult"))
 {
-    <div class="alert alert-success fade in" role="alert">
+    <div id="success">
         <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span>
         </button>
         @TempData["SaveResult"]
     </div>
 }
+<br />
 <table class="table">
     <tr id="toppers">
         <th class="text-center">

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace LetsJam.Services
 {
@@ -95,5 +96,12 @@ namespace LetsJam.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        //public List<SelectListItem> GetAllProductSKUs()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query = ctx.Products.ToList().Where(i => i.OwnerId == _userId).Select(p => new List<string>
+        //    }
+        //}
     }
 }

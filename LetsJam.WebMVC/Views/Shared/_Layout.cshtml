@@ -11,34 +11,20 @@
 <body>
     <div id="page-container">
         <div id="content-wrap">
-            <div class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        @Html.ActionLink("Let's Jam", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li>@Html.ActionLink("Jammers", "Index", "Member")</li>
-                                <li>@Html.ActionLink("Rock Stars", "Index", "Enrollment")</li>
-                                <li>@Html.ActionLink("Lessons", "Index", "Lesson")</li>
-                                <li>@Html.ActionLink("Products", "Index", "Product")</li>
-                                <li>@Html.ActionLink("Sales", "Index", "Transaction")</li>
-                            }
-                        </ul>
-                        @Html.Partial("_LoginPartial")
-                    </div>
-                </div>
-            </div>
-            <div class="container body-content" id="stuff">
+            <ul>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                <li>@Html.ActionLink("Jammers", "Index", "Member")</li>
+                <li>@Html.ActionLink("Rock Stars", "Index", "Enrollment")</li>
+                <li>@Html.ActionLink("Lessons", "Index", "Lesson")</li>
+                <li>@Html.ActionLink("Products", "Index", "Product")</li>
+                <li>@Html.ActionLink("Sales", "Index", "Transaction")</li>
+                <li> @Html.Partial("_LoginPartial")</li>
+            </ul>
+            <ul>
+            </ul>
+
+            <div class="container body-content" id="bodyviews">
                 @RenderBody()
-                <hr />
             </div>
         </div>
         <footer class="text-center" id="footer">

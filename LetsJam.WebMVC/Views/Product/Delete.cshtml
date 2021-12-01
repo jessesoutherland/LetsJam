@@ -6,10 +6,10 @@
 
 <h2 class="text-center" id="titles">Delete Product</h2>
 <br />
+<br />
 
 <div>
-    <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" id="borders">
         <dt>
             @Html.DisplayNameFor(model => model.SKU)
         </dt>
@@ -56,7 +56,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color text-right">
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>

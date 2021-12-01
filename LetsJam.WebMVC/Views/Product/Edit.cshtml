@@ -4,16 +4,15 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
+<h2 class="text-center" id="titles">Edit</h2>
+<br />
+<br />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ProductEdit</h4>
-        <hr />
+
+    <div class="form-horizontal" id="borders">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.SKU)
 
@@ -57,7 +56,7 @@
     </div>
 }
 
-<div>
+<div class="text-right">
     @Html.ActionLink("Back to List", "Index")
 </div>
 

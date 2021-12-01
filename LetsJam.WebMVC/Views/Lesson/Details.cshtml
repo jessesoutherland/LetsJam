@@ -4,11 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 class="text-center" id="titles">Lesson Details</h2>
+<br />
+<br />
 
-<div>
-    <h4>LessonDetail</h4>
-    <hr />
+<div id="borders">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.LessonId)
@@ -27,16 +27,15 @@
         </dd>
     </dl>
 </div>
-<hr />
 
-<h3>Students:</h3>
-
-<table class="table" id="toppers">
+<h3 id="subtitle">Rock Stars</h3>
+<br />
+<table class="table">
     @try
     {
         if (Model.Enrollments.ElementAt(0) != null)
         {
-            <tr>
+            <tr id="toppers">
                 <th>
                     @Html.DisplayNameFor(model => model.Enrollments.ElementAt(0).EnrollmentId)
                 </th>
@@ -72,7 +71,7 @@
         </tr>
     }
 </table>
-<p>
+<p class="text-right">
     @Html.ActionLink("Edit", "Edit", new { id = Model.LessonId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

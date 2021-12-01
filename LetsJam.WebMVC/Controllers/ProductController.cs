@@ -15,8 +15,8 @@ namespace LetsJam.WebMVC.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            ProductService service = CreateProductService();
-            var model = service.GetAllProducts();
+            ProductService svc = CreateProductService();
+            var model = svc.GetAllProducts();
             return View(model);
         }
         public ActionResult Create()
@@ -30,9 +30,18 @@ namespace LetsJam.WebMVC.Controllers
             if (!ModelState.IsValid)
                 return View(product);
 
-            var service = CreateProductService();
+            var svc = CreateProductService();
 
-            if (service.CreateProduct(product))
+            //foreach (string sku in svc.GetAllProductSKUs())
+            //{
+            //    if (product.SKU == sku)
+            //    {
+            //        ModelState.AddModelError("", "SKU is already in use.");
+
+            //        return View(product);
+            //    }
+            //}
+            if (svc.CreateProduct(product))
             {
                 TempData["SaveResult"] = "The product was created.";
                 return RedirectToAction("Index");
@@ -70,9 +79,9 @@ namespace LetsJam.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(product);
 
-            var service = CreateProductService();
+            var svc = CreateProductService();
 
-            if (service.UpdateProduct(product))
+            if (svc.UpdateProduct(product))
             {
                 TempData["SaveResult"] = "The product was updated.";
                 return RedirectToAction("Index");
@@ -102,8 +111,8 @@ namespace LetsJam.WebMVC.Controllers
         private ProductService CreateProductService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ProductService(userId);
-            return service;
+            var svc = new ProductService(userId);
+            return svc;
         }
 
     }
