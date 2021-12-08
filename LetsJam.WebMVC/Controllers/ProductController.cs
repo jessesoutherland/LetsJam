@@ -32,15 +32,16 @@ namespace LetsJam.WebMVC.Controllers
 
             var svc = CreateProductService();
 
-            //foreach (string sku in svc.GetAllProductSKUs())
-            //{
-            //    if (product.SKU == sku)
-            //    {
-            //        ModelState.AddModelError("", "SKU is already in use.");
 
-            //        return View(product);
-            //    }
-            //}
+            foreach (SelectListItem sku in svc.GetAllProductSKUs())
+            {
+                if (product.SKU == sku.Value)
+                {
+                    ModelState.AddModelError("", "SKU is already in use.");
+
+                    return View(product);
+                }
+            }
             if (svc.CreateProduct(product))
             {
                 TempData["SaveResult"] = "The product was created.";

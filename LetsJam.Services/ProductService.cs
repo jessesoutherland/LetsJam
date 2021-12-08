@@ -96,12 +96,18 @@ namespace LetsJam.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        //public List<SelectListItem> GetAllProductSKUs()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query = ctx.Products.ToList().Where(i => i.OwnerId == _userId).Select(p => new List<string>
-        //    }
-        //}
+        public List<SelectListItem> GetAllProductSKUs()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Products.ToList().Where(i => i.OwnerId == _userId).Select(p => new SelectListItem
+                {
+                    Value = p.SKU,
+                    Text = p.SKU
+                }).ToList();
+
+                return query;
+            }
+        }
     }
 }
