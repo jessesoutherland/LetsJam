@@ -38,11 +38,11 @@ namespace LetsJam.WebMVC.Controllers
 
             if (svc.CreateMember(member))
             {
-                TempData["SaveResult"] = "The member was created.";
+                TempData["SaveResult"] = "The jammer was created.";
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "The member could not be created.");
+            ModelState.AddModelError("", "The jammer could not be created.");
 
             return View(member);
         }
@@ -77,14 +77,14 @@ namespace LetsJam.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(member);
 
-            var service = CreateMemberService();
+            var svc = CreateMemberService();
 
-            if (service.UpdateMember(member))
+            if (svc.UpdateMember(member))
             {
-                TempData["SaveResult"] = "The member was updated.";
+                TempData["SaveResult"] = "The jammer was updated.";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", "The member could not be updated.");
+            ModelState.AddModelError("", "The jammer could not be updated.");
 
             return View(member);
         }
@@ -105,7 +105,7 @@ namespace LetsJam.WebMVC.Controllers
 
             svc.DeleteMember(id);
 
-            TempData["SaveResult"] = "The member was deleted";
+            TempData["SaveResult"] = "The jammer was deleted";
 
             return RedirectToAction("Index");
         }

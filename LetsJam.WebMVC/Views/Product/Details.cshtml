@@ -61,16 +61,16 @@
         if (Model.Transactions.ElementAt(0) != null)
         {
             <tr id="toppers">
-                <th>
+                <th class="text-center">
                     @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).TransactionId)
                 </th>
-                <th>
+                <th class="text-center">
                     @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).MemberName)
                 </th>
-                <th>
+                <th class="text-center">
                     @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).NumberOfProductPurchased)
                 </th>
-                <th>
+                <th class="text-center">
                     @Html.DisplayNameFor(model => model.Transactions.ElementAt(0).DateOfTransaction)
                 </th>
             </tr>
@@ -86,7 +86,7 @@
 
     @foreach (var prop in Model.Transactions)
     {
-        <tr>
+        <tr class="text-center">
             <td>
                 @Html.DisplayFor(modelItem => prop.TransactionId)
             </td>

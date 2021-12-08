@@ -22,9 +22,6 @@ namespace LetsJam.WebMVC.Controllers
         }
         public ActionResult Create()
         {
-            //var svc = CreateTransactionService();
-            //ViewBag.Products = svc.GetAllProductSKUs();
-            //ViewBag.Members = svc.GetAllMemberIds();
             CreateViewBags();
             return View();
         }

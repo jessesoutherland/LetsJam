@@ -21,6 +21,9 @@
 <table class="table">
     <tr id="toppers">
         <th class="text-center">
+            @Html.DisplayNameFor(model => model.LessonId)
+        </th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Instrument)
         </th>
         <th class="text-right">
@@ -32,11 +35,14 @@
     {
         <tr class="text-center">
             <td>
+                @Html.DisplayFor(modelItem => item.LessonId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Instrument)
             </td>
             <td class="text-right" id="links">
                 @Html.ActionLink("Edit", "Edit", new { id = item.LessonId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.LessonId }) |
+                @Html.ActionLink("Rock Stars", "Details", new { id = item.LessonId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.LessonId })
             </td>
         </tr>

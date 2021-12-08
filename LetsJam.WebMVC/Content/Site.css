@@ -45,12 +45,11 @@ textarea {
     bottom: 0;
     width: 100%;
     height: 2.5rem;
-    color: black;
+    color: #ffad33;
     background: border-box;
     margin-bottom: -17px;
     backdrop-filter: blur(20px);
 }
-
 
 #bodyviews {
     backdrop-filter: blur(20px);
@@ -128,7 +127,8 @@ dt {
 }
 
 #intro {
-    padding: 70px;
+    padding: 30px;
+    margin:0 0 70px 0;
 }
 
 #subtitle {

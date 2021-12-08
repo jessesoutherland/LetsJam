@@ -4,45 +4,23 @@
     ViewBag.Title = "Details";
 }
 
-<h2 class="text-center" id="titles">Lesson Details</h2>
+<h2 class="text-center" id="titles">Rock Stars</h2>
 <br />
 <br />
 
-<div id="borders">
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LessonId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LessonId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Instrument)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Instrument)
-        </dd>
-    </dl>
-</div>
-
-<h3 id="subtitle">Rock Stars</h3>
-<br />
 <table class="table">
     @try
     {
         if (Model.Enrollments.ElementAt(0) != null)
         {
             <tr id="toppers">
-                <th>
+                <th class="text-center">
                     @Html.DisplayNameFor(model => model.Enrollments.ElementAt(0).EnrollmentId)
                 </th>
-                <th>
+                <th class="text-center">
                     @Html.DisplayNameFor(model => model.Enrollments.ElementAt(0).StudentName)
                 </th>
-                <th>
+                <th class="text-center">
                     @Html.DisplayNameFor(model => model.Enrollments.ElementAt(0).DifficultyLevel)
                 </th>
             </tr>
@@ -58,7 +36,7 @@
 
     @foreach (var prop in Model.Enrollments)
     {
-        <tr>
+        <tr class="text-center">
             <td>
                 @Html.DisplayFor(modelItem => prop.EnrollmentId)
             </td>

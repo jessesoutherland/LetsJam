@@ -38,11 +38,11 @@ namespace LetsJam.WebMVC.Controllers
 
             if (svc.CreateEnrollment(nroll))
             {
-                TempData["SaveResult"] = "The member has been enrolled.";
+                TempData["SaveResult"] = "The rock star has been enrolled.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "The member was not able to be enrolled.");
+            ModelState.AddModelError("", "The rock star was not able to be enrolled.");
             return View(nroll);
         }
         public ActionResult Details(int id)
