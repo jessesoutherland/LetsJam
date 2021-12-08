@@ -93,6 +93,8 @@ namespace LetsJam.Services
                 var query = ctx.Enrollments.Single(e => e.OwnerId == _userId && e.EnrollmentId == id);
 
                 ctx.Enrollments.Remove(query);
+                Member student = ctx.Members.Find(query.MemberId);
+                student.IsStudent = false;
 
                 return ctx.SaveChanges() == 1;
             }
