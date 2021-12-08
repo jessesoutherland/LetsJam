@@ -23,15 +23,13 @@
                 }
                 <li> @Html.Partial("_LoginPartial")</li>
             </ul>
-            <ul>
-            </ul>
 
             <div class="container body-content" id="bodyviews">
                 @RenderBody()
             </div>
         </div>
         <footer class="text-center" id="footer">
-            <p id="bottomtag">
+            <p>
                 &copy; @DateTime.Now.Year - Let's Jam by Jesse Southerland | @Html.ActionLink("About", "About", "Home") |
                 @Html.ActionLink("Contact", "Contact", "Home") |
             </p>

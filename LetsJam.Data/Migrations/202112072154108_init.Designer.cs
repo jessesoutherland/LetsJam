@@ -13,7 +13,7 @@ namespace LetsJam.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202112010446524_init"; }
+            get { return "202112072154108_init"; }
         }
         
         string IMigrationMetadata.Source
